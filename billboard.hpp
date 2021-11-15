@@ -1,4 +1,7 @@
-#include "linked_list.hpp"
+#ifndef BILLBOARD_HPP
+#define BILLBOARD_HPP
+
+#include "node.hpp"
 
 #include <stdbool.h>
 
@@ -10,7 +13,8 @@ class Billboard {
     
     // Sends the display information to the connected arduinos, i.e. what messages to display and the time for each message.
     void send_display_info(void); 
-
+    
+    /*
     // Main menu options
     void log_in(void);
     void create_account(void);
@@ -26,7 +30,12 @@ class Billboard {
     // Menus
     void main_menu(void); // Runs the main menu
     void account_menu(void); // Runs the account menu
+    */
 
     public:
     void run(void); //Runs the billboard
+
+
 };
+
+#endif // #ifndef BILLBOARD_HPP
