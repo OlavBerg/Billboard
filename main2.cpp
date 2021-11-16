@@ -9,6 +9,21 @@
 7. Read from the Arduino if data is received successfully or if the action is taken as per needed
 */
 
+//Connect with me:
+/*    Twitter: http://www.twitter.com/ZainsOfficial/
+    Facebook: http://www.facebook.com/ZainsOfficial/
+    Github: http://github.com/ZainUlMustafa/
+*/
+
+/* This software is allowed for any user to copy, modify, merge, and distribute in any of his/her project.
+Complete repository for this project is available on github. If you find this project anywhere except github, it
+is to be noted that it is not made by me and not distributed by me. 
+Please follow this link to get to the original repository of github for this project
+Github shortened link (no spam and no ads): http://bit.ly/2vGkinQ
+*/
+
+/* PC 2 Arduino */
+
 #include<iostream>
 using namespace std;
 #include<string>
@@ -31,7 +46,7 @@ int main(){
         cout<<"Error in port name"<<endl<<endl;
     }
     while(arduino.isConnected()){
-        cout<<"Enter your command: "<<endl;
+        cout<<"Enter your command: ";
         string data;
         cin>>data;
 
@@ -40,11 +55,22 @@ int main(){
         charArray[data.size()] = '\n';
 
         arduino.writeSerialPort(charArray, MAX_DATA_LENGTH);
-        arduino.readSerialPort(output, MAX_DATA_LENGTH);
+        //arduino.readSerialPort(output, MAX_DATA_LENGTH);
 
-        cout<<">> "<<output<<endl;
+        //cout<<">> "<<output<<endl;
 
         delete [] charArray;
     }
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
