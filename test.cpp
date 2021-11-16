@@ -1,17 +1,27 @@
+#include "SerialClass.h"
+
 #include <iostream>
 
 using namespace std;
 
 int main(void) {
-    
-    string str;
 
-    cout << "Enter a string: ";
-    cin >> str;
-    //cout << "You entered: " << str << endl;
-    cout << "First character: " << *str.begin() << endl;
-    cout << "Last character: " << *str.end() << endl;
-    cout << "Size: " << str.size() << endl;
+    Serial my_serial("\\\\.\\COM3");
+    
+
+    while(my_serial.IsConnected()){
+        cout<<"Enter your command: ";
+        string data;
+        cin>>data;
+
+        char *charArray = new char[data.size() + 1];
+        copy(data.begin(), data.end(), charArray);
+        charArray[data.size()] = '\n';
+
+        my_serial.WriteData(charArray, data.size());
+
+        delete [] charArray;
+    }
 
     return 0;
 }
