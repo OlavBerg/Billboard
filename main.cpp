@@ -6,7 +6,9 @@ using namespace std;
 
 int main(void) {
     
-    Billboard billboard;
+    Serial serial_port("\\\\.\\COM3");
+
+    Billboard billboard(&serial_port);
     billboard.run();
 
     return 0;

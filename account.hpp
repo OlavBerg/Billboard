@@ -8,19 +8,19 @@ class Account {
     private:
     std::string company_name;
     //std::string password;
-    int paid_amount;
+    int amount;
     std::string message;
 
     public:
     // Constructor
-    Account(std::string company_name, int paid_amount, std::string message);
+    Account(std::string company_name, int amount, std::string message);
     
     std::string get_company_name(void);
 
     //Returns true if the given password is identical to the account's password. Returns false otherwise.
     //bool password_correct(std::string& password); 
 
-    int get_paid_amount(void);
+    int get_amount(void);
 
     std::string get_message(void);
 

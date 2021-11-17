@@ -1,18 +1,32 @@
 #ifndef BILLBOARD_HPP
 #define BILLBOARD_HPP
 
-#include "node.hpp"
+#include "SerialClass.h"
+#include "account.hpp"
+#include "message_time_pair.hpp"
 
 #include <stdbool.h>
+#include <vector>
+
+//Serial my_serial("\\\\.\\COM3");
 
 class Billboard {
     private:
     bool is_running; // Is true while the billboard is running. Is false otherwise.
-    Node* account_list;
-    Node* serial_port_list;
+    std::vector<Account*> account_list;
+    std::vector<message_time_pair*> message_table;
+    Serial *serial_port;
+
+    void write_to_serial_port(const std::string& str);
+    void clear_message_table(void);
+    void update_message_table(void);
+    void print_to_lcd(void);
+   
+    
+    //std::vector<string> serial_port_list;
     
     // Sends the display information to the connected arduinos, i.e. what messages to display and the time for each message.
-    void send_display_info(void); 
+    //void send_display_info(void); 
     
     /*
     // Main menu options
@@ -33,7 +47,10 @@ class Billboard {
     */
 
     public:
+    Billboard(Serial *serial_port);
+
     void run(void); //Runs the billboard
+    Billboard();
 
 
 };
