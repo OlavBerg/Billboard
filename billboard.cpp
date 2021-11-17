@@ -16,16 +16,7 @@ void Billboard::write_to_serial_port(const string& str) {
     delete [] char_array;
 }
 
-void Billboard::clear_message_table(void) {
-    for(message_time_pair *mtp : message_table) {
-        delete mtp;
-    }
-    message_table.clear();
-}
-
-void Billboard::update_message_table(void) {
-    clear_message_table();
-    
+void Billboard::setup_message_table(void) {
     int total_amount = 0;
 
     for (Account *account : account_list) {
