@@ -14,15 +14,16 @@ class Billboard {
     bool is_running; // Is true while the billboard is running. Is false otherwise.
     std::vector<Account*> account_list;
     std::vector<message_time_pair*> message_table;
-    Serial *serial_port;
+    std::vector<Serial*> serial_port_list;
+    //Serial *serial_port;
 
-    void write_to_serial_port(const std::string& str);
+    void write_to_serial_ports(const std::string& str);
     void setup_message_table(void);
     void enter_accounts(void);
     void loop_display(void);
 
     public:
-    Billboard(Serial *serial_port); // Contructor
+    Billboard(std::vector<const char*> &port_name_list); // Contructor
     void run(void); // Runs the billboard
 };
 
