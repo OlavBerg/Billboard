@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <math.h>
+#include<limits>
 
 using namespace std;
 
@@ -49,8 +50,20 @@ void Billboard::enter_accounts(void) {
         cout << "Enter company name: "; 
         getline(cin, company_name);
 
-        cout << "Enter amount: "; 
+        cout << "Enter amount: ";
         cin >> amount;
+        while(true) {
+            if(cin.fail() || amount <= 0) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                cout << "The amount has to be a positive integer." << endl;
+                cout << "Enter amount: ";
+                cin >> amount;
+                }
+            else {
+                break;
+            }
+        }
         clear_input_buffer();
         
         cout << "Enter message: "; 
@@ -58,10 +71,14 @@ void Billboard::enter_accounts(void) {
 
         account_list.push_back(new Account(company_name, amount, message));
 
+        if (account_list.size() == 5) {
+            entering_accounts = false;
+        }
+
         bool valid_choice = false;
-        while (!valid_choice) {
+        while (!valid_choice && entering_accounts) {
             char choice;
-            cout << "Do you want to enter more accounts (y/n)?: ";
+            cout << "Do you want to enter more accounts? You can enter " << 5 - account_list.size() << " more accounts. (y/n): ";
             cin >> choice;
             clear_input_buffer();
             

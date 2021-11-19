@@ -15,7 +15,6 @@ class Billboard {
     std::vector<Account*> account_list;
     std::vector<message_time_pair*> message_table;
     std::vector<Serial*> serial_port_list;
-    //Serial *serial_port;
 
     void write_to_serial_ports(const std::string& str);
     void setup_message_table(void);
