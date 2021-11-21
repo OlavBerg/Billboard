@@ -38,7 +38,7 @@ void Arduino::set_message_table(vector<unique_ptr<Account>>& account_list) {
     }
 
     for (unique_ptr<Account>& account : account_list) {
-        int time = round(10000.0 * (float)account->amount / (float)total_amount);
+        int time = round(60000.0 * (float)account->amount / (float)total_amount);
         message_table.push_back(new message_time_pair(account->message, time));
     }
 }
