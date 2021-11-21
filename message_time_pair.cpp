@@ -2,7 +2,7 @@
 
 using namespace std;
 
-message_time_pair::message_time_pair(string message, unsigned short time) {
+message_time_pair::message_time_pair(string& message, unsigned short time) {
     this->message = message;
     this->time = time;
 }

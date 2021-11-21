@@ -8,7 +8,7 @@ struct Account {
     int amount;
     std::string message;
 
-    Account(std::string company_name, int amount, std::string message);
+    Account(std::string& company_name, int amount, std::string& message);
 };
 
 #endif // #ifndef ACCOUNT_HPP

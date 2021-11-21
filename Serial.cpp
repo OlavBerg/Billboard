@@ -70,6 +70,14 @@ Serial::Serial(const char *portName)
 
 }
 
+/* Serial& Serial::operator=(const Serial& other) {
+    hSerial = other.hSerial;
+    connected = other.connected;
+    status = other.status;
+    errors = other.errors;
+    return *this;
+} */
+
 Serial::~Serial()
 {
     //Check if we are connected before trying to disconnect

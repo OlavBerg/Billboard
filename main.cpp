@@ -16,16 +16,15 @@ char* concatinate_const_char_ptrs(const char* s1, const char* s2) {
 
 int main(int argc, char **argv) {
 
-    vector<const char*> port_name_list;
-
-    for (int i = 1; i < argc; i++) {
-        const char* port_name = argv[i];
-        port_name_list.push_back(concatinate_const_char_ptrs("\\\\.\\", port_name));
+    if (argc < 2) {
+        cout << "ERROR: No serial ports given" << endl;
+        return -1;
     }
 
-    //Add serial ports
-    //port_name_list.push_back("\\\\.\\COM3");
-    //port_name_list.push_back("\\\\.\\COM4");
+    vector<const char*> port_name_list;
+    for (int i = 1; i < argc; i++) {
+        port_name_list.push_back(argv[i]);
+    }
 
     Billboard billboard(port_name_list);
     billboard.run();

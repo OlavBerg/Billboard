@@ -20,8 +20,13 @@ class Serial
         DWORD errors;
 
     public:
+        Serial() = default;
+
         //Initialize Serial communication with the given COM port
         Serial(const char *portName);
+
+        //Serial& operator=(const Serial& other);
+        
         //Close the connection
         ~Serial();
         //Read data in a buffer, if nbChar is greater than the
