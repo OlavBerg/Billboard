@@ -21,7 +21,9 @@ static char* concatinate_const_char_ptrs(const char* s1, const char* s2) {
 
 // Constructor
 Arduino::Arduino(const char* port_name) {
-    serial_port = make_unique<Serial>(concatinate_const_char_ptrs("\\\\.\\", port_name));
+    const char* port_name_concatinated = concatinate_const_char_ptrs("\\\\.\\", port_name);
+    serial_port = make_unique<Serial>(port_name_concatinated);
+    delete port_name_concatinated;
     current_message_index = 0;
 }
 
