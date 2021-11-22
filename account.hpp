@@ -3,6 +3,7 @@
 
 #include <string>
 
+// A struct consisting of information of a customer
 struct Account {
     std::string company_name;
     int amount;

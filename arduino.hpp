@@ -8,24 +8,22 @@
 #include <vector>
 #include <memory>
 
+// A class that handles communication with an arduino
 class Arduino {
     private:
     std::unique_ptr<Serial> serial_port;
     std::vector<message_time_pair*> message_table;
-    unsigned int current_message_index;
+    unsigned int current_message_index; // An index indicating the current message to be displayed
 
     public:
-    Arduino(const char* port_name);
-    ~Arduino();
+    Arduino(const char* port_name); // Constructor
+    ~Arduino(); // Destructor
     void set_message_table(std::vector<std::unique_ptr<Account>>& account_list);
-    void write();
+    void write(); // Display a message
     void increment_current_message_index();
-    int get_current_time();
-    void shuffle_message_table();
+    int get_current_time(); // Returns the display time of the current displayed message
+    void shuffle_message_table(); // Shuffles the display order of the messages
     int get_current_message_index();
-
-    //Only for testing
-    Serial& get_serial_port();
 };
 
 #endif // #ifndef ARDUINO_HPP

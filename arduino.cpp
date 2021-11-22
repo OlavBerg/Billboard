@@ -19,11 +19,13 @@ static char* concatinate_const_char_ptrs(const char* s1, const char* s2) {
     return s;
 }
 
+// Constructor
 Arduino::Arduino(const char* port_name) {
     serial_port = make_unique<Serial>(concatinate_const_char_ptrs("\\\\.\\", port_name));
     current_message_index = 0;
 }
 
+// Destructor
 Arduino::~Arduino() {
     for (message_time_pair *msp : message_table) {
         delete msp;
@@ -31,18 +33,21 @@ Arduino::~Arduino() {
 }
 
 void Arduino::set_message_table(vector<unique_ptr<Account>>& account_list) {
+    
+    // Get the total paid amount
     int total_amount = 0;
-
     for (unique_ptr<Account>& account : account_list) {
         total_amount += account->amount;
     }
 
+    // Partion display time between the companies according to their percentage of the total amount 
     for (unique_ptr<Account>& account : account_list) {
         int time = round(60000.0 * (float)account->amount / (float)total_amount);
         message_table.push_back(new message_time_pair(account->message, time));
     }
 }
 
+// Display a message
 void Arduino::write() {
     string& message = message_table[current_message_index]->message;
     
@@ -64,10 +69,12 @@ void Arduino::increment_current_message_index() {
     }
 }
 
+// Returns the display time of the current displayed message
 int Arduino::get_current_time() {
     return message_table[current_message_index]->time;
 }
 
+// Shuffles the display order of the messages
 void Arduino::shuffle_message_table() {
     unsigned seed = chrono::system_clock::now().time_since_epoch().count();
     shuffle(message_table.begin(), message_table.end(), default_random_engine(seed));

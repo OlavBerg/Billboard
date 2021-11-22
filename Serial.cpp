@@ -1,4 +1,8 @@
 #include "SerialClass.h"
+#include "port_not_found.hpp"
+
+#include <exception>
+#include <stdexcept>
 
 Serial::Serial(const char *portName)
 {
@@ -21,7 +25,8 @@ Serial::Serial(const char *portName)
         if(GetLastError()==ERROR_FILE_NOT_FOUND){
 
             //Print Error if neccessary
-            printf("ERROR: Handle was not attached. Reason: %s not available.\n", portName);
+            throw port_not_found();
+            //printf("ERROR: Handle was not attached. Reason: %s not available.\n", portName);
 
         }
         else

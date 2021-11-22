@@ -12,7 +12,7 @@ class Billboard {
     private:
     bool is_running; // Is true while the billboard is running. Is false otherwise.
     std::vector<std::unique_ptr<Account>> account_list;
-    std::vector<std::unique_ptr<Arduino>> arduino_list;
+    std::vector<std::unique_ptr<Arduino>> arduino_list; // List of connected arduinos
 
     void enter_accounts();
     void setup_arduinos();
@@ -21,6 +21,8 @@ class Billboard {
     public:
     Billboard(std::vector<const char*>& port_name_list); // Contructor
     void run(); // Runs the billboard
+    void save_accounts(std::string file_name);
+    void load_accounts(std::string file_name);
 };
 
 #endif // #ifndef BILLBOARD_HPP
