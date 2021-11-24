@@ -14,7 +14,7 @@ int main(int argc, char **argv) {
     }
 
     // Make a vector of all the given port names
-    vector<const char*> port_name_list;
+    vector<string> port_name_list;
     for (int i = 1; i < argc; i++) {
         port_name_list.push_back(argv[i]);
     }

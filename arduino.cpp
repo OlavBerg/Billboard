@@ -7,23 +7,13 @@
 #include <algorithm>
 #include <random>
 #include <chrono>
+#include <cstring>
 
 using namespace std;
 
-static char* concatinate_const_char_ptrs(const char* s1, const char* s2) {
-    
-    char *s = new char[strlen(s1)+strlen(s2)+1];
-    strcpy(s,s1);
-    strcat(s,s2);
-
-    return s;
-}
-
 // Constructor
-Arduino::Arduino(const char* port_name) {
-    const char* port_name_concatinated = concatinate_const_char_ptrs("\\\\.\\", port_name);
-    serial_port = make_unique<Serial>(port_name_concatinated);
-    delete port_name_concatinated;
+Arduino::Arduino(string& port_name) {
+    serial_port = make_unique<Serial>(("\\\\.\\" + port_name).c_str());
     current_message_index = 0;
 }
 

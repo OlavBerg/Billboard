@@ -151,8 +151,8 @@ void Billboard::loop_display() {
 }
 
 // Billboard constructor
-Billboard::Billboard(std::vector<const char*> &port_name_list) {
-    for (const char* port_name : port_name_list) {
+Billboard::Billboard(std::vector<string>& port_name_list) {
+    for (string& port_name : port_name_list) {
         arduino_list.push_back(make_unique<Arduino>(port_name));
     }
 }

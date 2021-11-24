@@ -16,7 +16,7 @@ class Arduino {
     unsigned int current_message_index; // An index indicating the current message to be displayed
 
     public:
-    Arduino(const char* port_name); // Constructor
+    Arduino(std::string& port_name); // Constructor
     ~Arduino(); // Destructor
     void set_message_table(std::vector<std::unique_ptr<Account>>& account_list);
     void write(); // Display a message

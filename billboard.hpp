@@ -19,7 +19,7 @@ class Billboard {
     void loop_display();
 
     public:
-    Billboard(std::vector<const char*>& port_name_list); // Contructor
+    Billboard(std::vector<std::string>& port_name_list); // Contructor
     void run(); // Runs the billboard
     void save_accounts(std::string file_name);
     void load_accounts(std::string file_name);
