@@ -21,8 +21,8 @@ class Billboard {
     public:
     Billboard(std::vector<std::string>& port_name_list); // Contructor
     void run(); // Runs the billboard
-    void save_accounts(std::string file_name);
-    void load_accounts(std::string file_name);
+    void save_accounts(const std::string& file_name);
+    void load_accounts(const std::string& file_name);
 };
 
 #endif // #ifndef BILLBOARD_HPP

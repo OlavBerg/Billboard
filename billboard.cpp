@@ -16,7 +16,7 @@ static void clear_cin() {
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
-static int get_index_of_lowest(vector<int> &int_vector) {
+static int get_index_of_lowest(vector<int>& int_vector) {
     int lowest = int_vector[0];
     int index_lowest = 0;
 
@@ -201,7 +201,7 @@ void Billboard::run() {
     loop_display();
 }
 
-void Billboard::save_accounts(string file_name) {
+void Billboard::save_accounts(const string& file_name) {
 
     // The file to save to
     ofstream file (file_name);
@@ -217,7 +217,7 @@ void Billboard::save_accounts(string file_name) {
     file.close();
 }
 
-void Billboard::load_accounts(string file_name) {
+void Billboard::load_accounts(const string& file_name) {
 
     // The file to load from
     ifstream file (file_name);
