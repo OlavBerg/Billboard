@@ -8,6 +8,8 @@
 #include <vector>
 #include <memory>
 
+#define LOOP_TIME 60000.0
+
 // A class that handles communication with an arduino
 class Arduino {
     private:
