@@ -61,9 +61,19 @@ void Billboard::enter_accounts() {
             }
         }
         
-        // Enter message
-        cout << "Enter message: "; 
-        getline(cin, message);
+        // Enter message, give an error if the message is longer than 24 characters
+        // (there will be a line break on the display if more than 24 characters are given)
+        while(true) {
+            cout << "Enter message: "; 
+            getline(cin, message);
+
+            if (message.size() > 24) {
+                cout << "ERROR: The message is too long. A maximum of 24 characters are allowed." << endl;
+            }
+            else {
+                break;
+            }
+        }
 
         // Put the account in the account list
         account_list.push_back(make_unique<Account>(company_name, amount, message));
