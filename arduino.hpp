@@ -8,7 +8,9 @@
 #include <vector>
 #include <memory>
 
+#ifndef LOOP_TIME
 #define LOOP_TIME 60000.0
+#endif // #ifndef LOOP_TIME
 
 // A class that handles communication with an arduino
 class Arduino {
